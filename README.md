@@ -4,11 +4,14 @@ This script can be used to lighten a Windows 11 ISO file by removing certain com
 
 This script uses PowerShell and DISM.
 
-> [!CAUTION] An internet connection is requiered to deploy applications (like VCRedist or web browser).
+> [!CAUTION]
+> An internet connection is requiered to deploy applications (like VCRedist or web browser).
 
-> [!TIPS] You're free to use or modify the script as you want (AGPL Licence). Feedback are also appreciated, they can help me to improve the script and fix bugs.
+> [!TIP]
+> You're free to use or modify the script as you want (AGPL Licence). Feedback are also appreciated, they can help me to improve the script and fix bugs.
 
-> [!NOTE] By default, the time configuration is noted like this : dd-MM-yyyy and hour set to 24h (European time format).
+> [!NOTE]
+> By default, the time configuration is noted like this : dd-MM-yyyy and hour set to 24h (European time format).
 
 ## Where can I found original ISO ?
 
@@ -42,7 +45,8 @@ All Windows bloatware are removed from this image. Only thoses applications rema
 
 Edge and OneDrive are also removed.
 
-> [!NOTE] An application can be added or removed from the exclusion list (look at "**Windows bloatware removal**" section).
+> [!NOTE]
+> An application can be added or removed from the exclusion list (look at "**Windows bloatware removal**" section).
 <br />If Edge reinstalls after an update, you can delete it again from the Control Panel. You can only do it without script if you are in Europe (DMA compliance). If not, I recommend you to use [AveYo Edge Removal](https://github.com/AveYo/fox/blob/main/Edge_Removal.bat) script.
 
 
@@ -66,7 +70,8 @@ As far as application integrations are concerned, here's what's planned :
 
 - Choosing an additional browser : [Ungoogled-Chromium](https://github.com/macchrome/winchrome/) and [updater](https://github.com/mkorthof/chrupd) integration
 
-> [!NOTE] I can add some specific browser ADMX in seperate file. You can check and add them to the main script if you want to deploy a specific browser configuration.
+> [!NOTE]
+> I can add some specific browser ADMX in seperate file. You can check and add them to the main script if you want to deploy a specific browser configuration.
 
 ## Credits
 
