@@ -78,3 +78,4 @@ As far as application integrations are concerned, here's what's planned :
 - **[George King](https://www.ntlite.com/community/index.php?members/george-king.5/)** for the OOBE.cmd and Watcher.cmd script
 - **[Chris Wu](https://github.com/TheDotSource/New-ISOFile)** for New-IsoFile function
 - **[ntdevlabs](https://github.com/ntdevlabs/tiny11builder)** for the script structuring model (Based on tiny11builder template)
+- **[Matt](https://stackoverflow.com/users/1016343/matt)** for the cmd elevation script
