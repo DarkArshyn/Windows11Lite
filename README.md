@@ -8,7 +8,7 @@ This script uses PowerShell and DISM.
 > An internet connection is requiered to deploy applications (like VCRedist or web browser).
 
 > [!TIP]
-> You're free to use or modify the script as you want (AGPL Licence). Feedback are also appreciated, they can help me to improve the script and fix bugs.
+> You're free to use or modify the script as you want (AGPL License). Feedback are also appreciated, they can help me to improve the script and fix bugs.
 
 > [!NOTE]
 > By default, the time configuration is noted like this : dd-MM-yyyy and hour set to 24h (European time format).
