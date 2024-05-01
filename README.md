@@ -13,13 +13,13 @@ This script uses PowerShell and DISM.
 > [!NOTE]
 > By default, the time configuration is noted like this : dd-MM-yyyy and hour set to 24h (European time format).
 
-## Where can I found original ISO ?
+## Where can I find original ISO ?
 
-You can download an original ISO of Windows 11 from [Microsoft](https://www.microsoft.com/software-download/windows11) website or build yourself with [UUP dump](https://uupdump.net/fetchupd.php?arch=amd64&ring=retail).
+You can download an original ISO of Windows 11 from [Microsoft](https://www.microsoft.com/software-download/windows11) website or build it yourself with [UUP dump](https://uupdump.net/fetchupd.php?arch=amd64&ring=retail).
 
 ## What's set ?
 
-### App deleted
+### Deleted apps
 
 All Windows bloatware are removed from this image. Only thoses applications remains :
 
@@ -60,7 +60,7 @@ With registry manipulation, performances are boosted. Components like background
 
 ### Customization
 
-With registry manipulation, I have customize some parts of Windows like restore old context menu or enable folders by default on Start Menu. You can see it in the "**Registry : Customization**" section.
+With registry manipulation, I have customized some parts of Windows like restore old context menu or enable folders by default on Start Menu. You can see it in the "**Registry : Customization**" section.
 
 ## What's next ?
 
