@@ -47,7 +47,7 @@ Edge, OneDrive and Recall are also removed.
 
 > [!NOTE]
 > An application can be added or removed from the exclusion list (look at "**Windows bloatware removal**" section).
-<br />If Edge reinstalls after an update, you can delete it again from the Control Panel. You can only do it without script if you are in Europe (DMA compliance). If not, I recommend you to use [AveYo Edge Removal](https://github.com/AveYo/fox/blob/main/Edge_Removal.bat) script.
+<br />If Edge reinstalls after an update, you can delete it again from the Control Panel. You can only do it without script if you are in Europe (DMA compliance). If not, I recommend you to use my [EdgeRemval](https://github.com/DarkArshyn/MS-Edge-Removal-PowerShell) script or [AveYo Edge Removal](https://github.com/AveYo/fox/blob/main/Edge_Removal.bat) script.
 
 
 ### Telemetry
