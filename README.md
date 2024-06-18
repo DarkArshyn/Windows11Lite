@@ -13,7 +13,7 @@ This script uses PowerShell and DISM.
 > [!NOTE]
 > By default, the time configuration is noted like this : dd-MM-yyyy and the hour set to 24h (European time format).
 
-## Where can I find original ISO ?
+## Where can I find an original ISO ?
 
 You can download an original ISO of Windows 11 from [Microsoft](https://www.microsoft.com/software-download/windows11) website or build it yourself with [UUP dump](https://uupdump.net/fetchupd.php?arch=amd64&ring=retail).
 
@@ -43,7 +43,7 @@ All Windows bloatware are removed from this image. Only those applications remai
 - WindowsStore
 - WindowsTerminal
 
-Edge and OneDrive are also removed.
+Edge, OneDrive and Recall are also removed.
 
 > [!NOTE]
 > An application can be added or removed from the exclusion list (look at "**Windows bloatware removal**" section).
