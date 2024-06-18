@@ -1,9 +1,9 @@
-﻿#################################################################
+#################################################################
 #                                                               #
 #             Windows 11 Lite Image - DarkArshyn                #
 #                    04/12/2023 - Version 01                    #
 #                                                               #
-#                 Last Revision : 28/04/2024                    #
+#                 Last Revision : 18/06/2024                    #
 #                                                               #
 #################################################################
 
@@ -204,6 +204,43 @@ Catch {
     Write-Log "Edge removal failed. An error has been detected $($_.Exception.Message)." -Err
 }
 
+#####################################
+#   Remove Windows Recall Spyware   #
+#####################################
+
+If (Test-Path $Mount_Folder\Windows\SystemApps\MicrosoftWindows.Client.AIX*){
+
+    Write-Log "Removing Recall, please wait..."
+
+    Try { 
+
+        #Find local administrator
+        $GetAdminSID = Get-LocalGroup -SID "S-1-5-32-544"
+        $Admin = $GetAdminSID.Name
+
+        #Assigning rights to the folder and deleting it
+        $RecallLocation = Get-ChildItem -Path "$Mount_Folder\Windows\SystemApps" -Filter "MicrosoftWindows.Client.AIX*" -Directory | Select-Object -ExpandProperty FullName
+        $RecallLocationRecurse = Get-ChildItem $RecallLocation -Recurse | Select-Object -ExpandProperty FullName
+        $ACL = Get-ACL $RecallLocation
+        $Group = New-Object System.Security.Principal.NTAccount("BUILTIN", "$Admin")
+        $ACL.SetOwner($Group)
+        $AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("BUILTIN\$Admin", "FullControl", "Allow")
+        $ACL.SetAccessRule($AccessRule)
+        Set-Acl $RecallLocation -AclObject $ACL
+        ForEach ($Folder in $RecallLocation)
+            {Set-Acl -Path $RecallLocationRecurse -AclObject $ACL}
+
+        Remove-Item -Path $RecallLocation -Recurse -Force
+        Start-Sleep 2
+
+        Write-Log "Recall removal complete" -Success
+    }
+    Catch {
+
+        Write-Log "Recall removal failed. An error has been detected $($_.Exception.Message)." -Err
+    }
+}
+
 #############################################################################
 #   Edit IntegratedServicesRegionPolicySet.json file (Digital Market Act)   #
 #############################################################################
@@ -301,6 +338,10 @@ If($Win11Requierements -eq "1"){
 #########################
 #   Registry : Privacy  #
 #########################
+
+#Disable Windows Recall (AI Spyware)
+reg add "HKLM\zSOFTWARE\Policies\Microsoft\Windows\WindowsAI" /v "DisableAIDataAnalysis" /t REG_DWORD /d "1" /f
+reg add "HKLM\zNTUSER\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" /v "DisableAIDataAnalysis" /t REG_DWORD /d "1" /f
 
 #Disable Windows Copilot
 reg add "HKLM\zNTUSER\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot" /v "TurnOffWindowsCopilot" /t REG_DWORD /d "1" /f
@@ -1122,6 +1163,11 @@ Add-Content -Path $Temp_Folder'setup\RegDeploy.reg' 'Windows Registry Editor Ver
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
 @="-"
 
+; Disable automatic BitLocker encryption when update to 24H2
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker]"
+"PreventDeviceEncryption"=dword:00000001
+
 ; Open .msi files in administrator mode
 
 [HKEY_CLASSES_ROOT\Msi.Package\shell\runas\command]
@@ -1268,9 +1314,6 @@ Add-Content -Path $Temp_Folder'autounattend.xml' '<?xml version="1.0" encoding="
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserData>
-				<ProductKey>
-					<Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
-				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>
 		</component>
